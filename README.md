@@ -15,3 +15,9 @@ Adding Front Matter
 
 Used [a script](add_front_matter.py) like this: `find content/post -name '*.rst' | xargs python3 add_front_matter.py`
 
+Fix Images and Attachments
+==========================
+Blohg used a non-standard image tag, but it's near identical to the real one,
+and fixed with:
+
+`rg -l '\.\. attachment-image' | xargs perl -p -i -e 's/^\.\. attachment-image:: /.. image:: \/unblog\/attachments\//'`
