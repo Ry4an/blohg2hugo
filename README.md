@@ -13,7 +13,7 @@ for filename in $(find content/post -name '*.rst') ; do echo -n $filename; hg lo
 Adding Front Matter
 ===================
 
-Used [a script](add_front_matter.py) like this: `find content/post -name '*.rst' | xargs python3 add_front_matter.py`
+Used [add_front_matter.py](add_front_matter.py) like this: `find content/post -name '*.rst' | xargs python3 add_front_matter.py`
 
 Fix Images and Attachments
 ==========================
@@ -21,3 +21,9 @@ Blohg used a non-standard image tag, but it's near identical to the real one,
 and fixed with:
 
 `rg -l '\.\. attachment-image' | xargs perl -p -i -e 's/^\.\. attachment-image:: /.. image:: \/unblog\/attachments\//'`
+
+Removing Old Titles
+===================
+
+With blohg the title needed to be in the markup, but the hugo template handles
+that, so I used [remove_old_titles.py](remove_old_titles.py) like this: `find content/post -name '*.rst' | xargs python3 remove_old_titles.py`
